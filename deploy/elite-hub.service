@@ -1,0 +1,12 @@
+[Unit]
+Description=Elite Hub portal + business API
+After=network.target docker.service
+
+[Service]
+WorkingDirectory=/opt/elite-hub/services/hub-api
+EnvironmentFile=/etc/elite-hub/hub.env
+ExecStart=/opt/elite-hub/services/hub-api/.venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 18889
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
